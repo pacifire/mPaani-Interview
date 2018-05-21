@@ -6,5 +6,4 @@ interface MainActivityPresenter : BasePresenter {
 
     fun activityInitialized()
 
-
 }//MainActivityPresenter closes here....

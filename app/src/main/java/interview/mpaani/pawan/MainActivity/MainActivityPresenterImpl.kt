@@ -1,5 +1,7 @@
 package interview.mpaani.pawan.MainActivity
 
+import interview.mpaani.pawan.R
+
 class MainActivityPresenterImpl(view:MainActivityView, interactor:MainActivityInteractor) : MainActivityPresenter, MainActivityInteractor.OnPostLoadFinishListener {
 
 
@@ -33,6 +35,7 @@ class MainActivityPresenterImpl(view:MainActivityView, interactor:MainActivityIn
     override fun activityInitialized() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
 
     override fun onDestroy() {
         mainView = null//Removing memory after usage.....

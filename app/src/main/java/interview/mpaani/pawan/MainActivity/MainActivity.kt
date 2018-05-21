@@ -4,16 +4,19 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.Menu
 import android.view.MenuItem
+import interview.mpaani.pawan.Posts.PostsFragment
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseActivity
+import interview.mpaani.pawan.utils.AppConstants
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainActivityView {
 
 
-    //Medium priority NON-UI variables goes below......
 
+    //Medium priority NON-UI variables goes below......
+    private lateinit var presenter:MainActivityPresenterImpl
 
 
 
@@ -28,10 +31,9 @@ class MainActivity : BaseActivity(), MainActivityView {
         setSupportActionBar(toolbar)
 
 
+        presenter = MainActivityPresenterImpl(this, MainActivityInteractorImpl())
 
-
-
-
+        initializePosts()
     }//onCreate closes here.....
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -63,4 +65,17 @@ class MainActivity : BaseActivity(), MainActivityView {
     override fun displayError(errorMessage: String, errorCode: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun initializePosts() {
+        supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment, PostsFragment(), AppConstants.POSTS_FRAGMENT_BACKSTACK_TAG)
+                .addToBackStack(AppConstants.POSTS_FRAGMENT_BACKSTACK_TAG)
+                .commit()
+    }//initializePosts closes here....
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }//onDestroy closes here....
 }//MainActivity class closes here.....

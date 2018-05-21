@@ -15,7 +15,7 @@ class AppConstants {
 
 
         ////////////////////...................FRAGMENT INFLATION CONSTANTS GOES BELOW........................\\\\\\\\\\\\\\\\\\\\\\
-
+        val POSTS_FRAGMENT_BACKSTACK_TAG = "POSTS_FRAGMENT_BACKSTACK_TAG"
 
     }//companion Object closes here.....
 
