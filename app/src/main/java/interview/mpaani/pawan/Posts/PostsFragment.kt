@@ -1,12 +1,14 @@
 package interview.mpaani.pawan.Posts
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseFragment
+import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -51,8 +53,15 @@ class PostsFragment : BaseFragment(), PostsView {
     /**
      * This method sets the Adapter on the RecyclerView.
      * ]**/
-    override fun setPostsAdapter() {
+    override fun setPostsAdapter(postsData: List<PostDataDO>) {
+        var linearLayoutManager = LinearLayoutManager(activity!!)
+        postsRecyclerV.layoutManager = linearLayoutManager
 
+        val dividerItemDecoration = DividerItemDecoration(postsRecyclerV.getContext(),
+                linearLayoutManager.getOrientation())
+//        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.recycler_divider))
+        postsRecyclerV.addItemDecoration(dividerItemDecoration)
+        postsRecyclerV.adapter = PostsAdapter(postsRecyclerV.context, postsData)
     }//setPostsAdapter closes here.....
 
     override fun appendPostsToView() {

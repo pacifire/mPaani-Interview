@@ -5,7 +5,7 @@ import interview.mpaani.pawan.abstracts.BaseView
 interface PostsView : BaseView{
 
 
-    fun setPostsAdapter()
+    fun setPostsAdapter(postsData: List<PostDataDO>)
 
     fun appendPostsToView()
 
