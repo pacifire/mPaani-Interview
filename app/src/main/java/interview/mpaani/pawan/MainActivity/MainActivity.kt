@@ -32,10 +32,6 @@ class MainActivity : BaseActivity(), MainActivityView {
 
 
 
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-//        }
     }//onCreate closes here.....
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
