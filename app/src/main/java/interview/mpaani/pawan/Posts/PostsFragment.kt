@@ -14,7 +14,7 @@ import interview.mpaani.pawan.abstracts.BaseFragment
 class PostsFragment : BaseFragment(), PostsView {
 
     //Medium priority NON-Ui variables goes below.....
-
+    private lateinit var postsPresenter:PostsPresenterImpl
 
 
     //Least priority variables goes below.....
@@ -24,16 +24,21 @@ class PostsFragment : BaseFragment(), PostsView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+
+        var view = inflater.inflate(R.layout.fragment_main, container, false)
+        postsPresenter = PostsPresenterImpl(this, PostsInteractorImpl())
+        postsPresenter.loadPosts()
+
+        return view
     }//onCreateView closes here.....
 
 
     override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun closeProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun displayError(errorMessage: String, errorCode: String) {
@@ -47,5 +52,16 @@ class PostsFragment : BaseFragment(), PostsView {
     override fun appendPostsToView() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        postsPresenter.onDestroy()
+    }//onDestroyView closes here.....
+
+    override fun onDestroy() {
+        super.onDestroy()
+        postsPresenter.onDestroy()
+    }//onDestroy closes here.....
 
 }//PostsFragment closes here.....

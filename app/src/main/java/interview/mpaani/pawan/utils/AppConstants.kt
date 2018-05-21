@@ -5,8 +5,8 @@ class AppConstants {
     companion object {
 
         ///////////////................NETWORK CALL CONSTANTS GOES BELOW...................\\\\\\\\\\\\\\\\\\\\\\
-        val baseURL:String = "http://jsonplaceholder.typicode.com/"
-        val postsURL:String = "posts"
+        val BASE_URL:String = "http://jsonplaceholder.typicode.com/"
+        val POSTS_URL:String = "posts"
         val usersURL:String = "users"
         val commentsURL:String = "comments"
 

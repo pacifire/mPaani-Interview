@@ -29,11 +29,11 @@ class MainActivity : BaseActivity(), MainActivityView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        initializePosts()
+
 
 
         presenter = MainActivityPresenterImpl(this, MainActivityInteractorImpl())
-
-        initializePosts()
     }//onCreate closes here.....
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
