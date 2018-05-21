@@ -31,7 +31,7 @@ class PostsInteractorImpl : PostsInteractor{
                 postLoadListener.postsLoadSuccess(postsData)
             }, { err ->
                 //do something with error
-                Log.d(TAG, "Pawan chk Error = $err")
+                postLoadListener.postsLoadFailure(err.toString().trim())
             })
         }//Fuel.get closes here.....
 

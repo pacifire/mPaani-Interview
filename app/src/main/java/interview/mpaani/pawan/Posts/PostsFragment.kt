@@ -13,6 +13,7 @@ import interview.mpaani.pawan.abstracts.BaseFragment
  */
 class PostsFragment : BaseFragment(), PostsView {
 
+
     //Medium priority NON-Ui variables goes below.....
     private lateinit var postsPresenter:PostsPresenterImpl
 
@@ -45,14 +46,22 @@ class PostsFragment : BaseFragment(), PostsView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+
+
+    /**
+     * This method sets the Adapter on the RecyclerView.
+     * ]**/
     override fun setPostsAdapter() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
+    }//setPostsAdapter closes here.....
 
     override fun appendPostsToView() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun noPostsFound(errorMsg: String) {
+
+    }//noPostsFound closes here.....
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -9,4 +9,6 @@ interface PostsView : BaseView{
 
     fun appendPostsToView()
 
+    fun noPostsFound(errorMsg:String)
+
 }//PostsView closes here....

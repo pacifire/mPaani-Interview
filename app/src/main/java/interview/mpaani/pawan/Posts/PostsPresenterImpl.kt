@@ -4,7 +4,6 @@ import android.util.Log
 
 class PostsPresenterImpl(view:PostsView, interactor:PostsInteractor) : PostsPresenter, PostsInteractor.OnPostLoadListener {
 
-
     //Medium priority NON-UI variables goes below.....
     private var postsView:PostsView? = null
     private var postsinteractor:PostsInteractor
@@ -22,16 +21,26 @@ class PostsPresenterImpl(view:PostsView, interactor:PostsInteractor) : PostsPres
 
     override fun postsLoadSuccess(postsData: List<PostDataDO>) {
 
-        if(postsView != null)
+        if(postsView != null) {
             postsView!!.closeProgress()
 
-        Log.d(TAG, "Pawan chk ${postsData[0].body}")
-
+            //The UI should set the ADapter once we recieved data properly.....
+            if (!postsData.isEmpty())//-ve condition....
+                postsView!!.setPostsAdapter()//i.e. we will set Adapter only if there is data in the Array....
+            else
+                postsView!!.noPostsFound("")
+        }//if(postsView != null) closes here.....
+        else
+            Log.w(TAG, "postsView is null")
     }//postsLoadSuccess closes here....
 
-    override fun postsLoadFailure() {
-        if(postsView != null)
+
+    override fun postsLoadFailure(postFailureMsg: String) {
+        if(postsView != null) {
             postsView!!.closeProgress()
+        }//if(postsView != null) closes here....
+        else
+            Log.w(TAG, "postsView is null")
     }//postsLoadFailure closes here.....
 
 
