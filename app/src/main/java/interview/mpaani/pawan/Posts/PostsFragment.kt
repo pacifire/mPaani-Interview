@@ -57,10 +57,9 @@ class PostsFragment : BaseFragment(), PostsView {
         var linearLayoutManager = LinearLayoutManager(activity!!)
         postsRecyclerV.layoutManager = linearLayoutManager
 
-        val dividerItemDecoration = DividerItemDecoration(postsRecyclerV.getContext(),
-                linearLayoutManager.getOrientation())
-//        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.recycler_divider))
-        postsRecyclerV.addItemDecoration(dividerItemDecoration)
+//        val dividerItemDecoration = DividerItemDecoration(postsRecyclerV.getContext(),
+//                linearLayoutManager.getOrientation())
+//        postsRecyclerV.addItemDecoration(dividerItemDecoration)
         postsRecyclerV.adapter = PostsAdapter(postsRecyclerV.context, postsData)
     }//setPostsAdapter closes here.....
 

@@ -9,6 +9,10 @@ class AppConstants {
         val POSTS_URL:String = "posts"
         val usersURL:String = "users"
         val commentsURL:String = "comments"
+        val AVATAR_BASE_URL = "https://api.adorable.io/avatars/"
+        val AVATAR_SIZE = 285
+
+
 
 
 
@@ -16,6 +20,19 @@ class AppConstants {
 
         ////////////////////...................FRAGMENT INFLATION CONSTANTS GOES BELOW........................\\\\\\\\\\\\\\\\\\\\\\
         val POSTS_FRAGMENT_BACKSTACK_TAG = "POSTS_FRAGMENT_BACKSTACK_TAG"
+        val POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG = "POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG"
+
+
+
+
+
+
+
+
+
+
+        ////////////////////...............BUNDLE EXTRAS GOES BELOW........................\\\\\\\\\\\\\\\\\\\
+        val SELECTED_POST_EXTRAS = "SELECTED_POST_EXTRAS"
 
     }//companion Object closes here.....
 

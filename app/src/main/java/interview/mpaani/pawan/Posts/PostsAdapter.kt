@@ -1,20 +1,21 @@
 package interview.mpaani.pawan.Posts
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import interview.mpaani.pawan.PostUserDetails.PostUserDetailsActivity
 import interview.mpaani.pawan.R
-import interview.mpaani.pawan.R.id.postsTitleTxtV
+import interview.mpaani.pawan.utils.AppConstants
 import kotlinx.android.synthetic.main.single_row_posts.view.*
 
 class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
     //Medium priority NON-UI variables goes below.....
-    private lateinit var mContext: Context;
-    private lateinit var mPostsDataList: List<PostDataDO>
+    private var mContext: Context;
+    private var mPostsDataList: List<PostDataDO>
 
 
 
@@ -41,8 +42,17 @@ class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerV
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.postsTitleTxtV.setText(mPostsDataList[position].title.toString().trim())
-        holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
+        holder.itemView.postsTitleTxtV.maxLines = 1
 
+        holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
+        holder.itemView.postsDescTxtV.maxLines = 3
+
+        holder.itemView.postsCardContainer.setOnClickListener(View.OnClickListener {
+
+            holder.itemView.postsTitleTxtV.context.startActivity(
+                    Intent(holder.itemView.postsTitleTxtV.context, PostUserDetailsActivity::class.java)
+                    .putExtra(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position]))
+        })//postsCardContainer.setOnClickListener closes here.....
     }//onBindViewHolder closes here.....
 
 

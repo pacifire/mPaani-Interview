@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/fab_margin">
+
+    <ImageView
+        android:id="@+id/userAvatarImgV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:background="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/userFullNameTxtV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="Pawan Shahani"
+        android:gravity="left|bottom"
+        android:layout_gravity="left|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:textSize="30sp"
+        android:singleLine="true"
+        android:maxLines="1"/>
+</FrameLayout>
