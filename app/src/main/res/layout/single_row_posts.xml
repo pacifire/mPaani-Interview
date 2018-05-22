@@ -43,6 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/postsTitleTxtV"/>
 
 
+    <!-- TODO: Pawan, remove Hardcoded dimens -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="24dp"
