@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import interview.mpaani.pawan.R
+import interview.mpaani.pawan.R.id.postsTitleTxtV
+import kotlinx.android.synthetic.main.single_row_posts.view.*
 
 class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
@@ -38,6 +40,8 @@ class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerV
     }//getItemCount closes here.....
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.itemView.postsTitleTxtV.setText(mPostsDataList[position].title.toString().trim())
+        holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
 
     }//onBindViewHolder closes here.....
 
