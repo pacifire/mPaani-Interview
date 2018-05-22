@@ -2,6 +2,7 @@ package interview.mpaani.pawan.PostUserDetails
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -32,6 +33,11 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
+        setSupportActionBar(toolbar)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+
 
         postUserpresenter = PostUserDetailsPresenterImpl(this, PostUserDetailsInteractorImpl())
 
@@ -59,6 +65,18 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
     }//onCreate closes here....
 
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+
+            else ->
+                return super.onOptionsItemSelected(item)
+        }//when(item!!.itemId) closes here....
+    }//onOptionsItemSelected closes here.....
 
 
     override fun setUserDetails(userDetailsDO: PostUserDetailsDO?) {

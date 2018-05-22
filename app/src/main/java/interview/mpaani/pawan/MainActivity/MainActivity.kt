@@ -27,6 +27,10 @@ class MainActivity : BaseActivity(), MainActivityView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+
         initializePosts()
 
 
@@ -34,6 +38,20 @@ class MainActivity : BaseActivity(), MainActivityView {
         presenter = MainActivityPresenterImpl(this, MainActivityInteractorImpl())
     }//onCreate closes here.....
 
+
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+
+            else ->
+                return super.onOptionsItemSelected(item)
+        }//when(item!!.itemId) closes here....
+    }//onOptionsItemSelected closes here.....
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
