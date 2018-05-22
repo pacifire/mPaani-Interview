@@ -14,8 +14,22 @@ class AppConstants {
 
 
 
+
+
         ////////////////////...................FRAGMENT INFLATION CONSTANTS GOES BELOW........................\\\\\\\\\\\\\\\\\\\\\\
         val POSTS_FRAGMENT_BACKSTACK_TAG = "POSTS_FRAGMENT_BACKSTACK_TAG"
+
+
+
+
+
+
+
+
+
+
+        ////////////////////...............BUNDLE EXTRAS GOES BELOW........................\\\\\\\\\\\\\\\\\\\
+        val SELECTED_POST_EXTRAS = "SELECTED_POST_EXTRAS"
 
     }//companion Object closes here.....
 

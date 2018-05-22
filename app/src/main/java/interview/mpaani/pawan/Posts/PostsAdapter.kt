@@ -1,6 +1,7 @@
 package interview.mpaani.pawan.Posts
 
 import android.content.Context
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.ContextMenu
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.R.id.postsTitleTxtV
+import interview.mpaani.pawan.utils.AppConstants
 import kotlinx.android.synthetic.main.single_row_posts.view.*
 
 class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
@@ -43,6 +45,14 @@ class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerV
         holder.itemView.postsTitleTxtV.setText(mPostsDataList[position].title.toString().trim())
         holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
 
+
+        holder.itemView.postsCardContainer.setOnClickListener(View.OnClickListener {
+
+            var selectedPostBundle:Bundle = Bundle()
+//            selectedPostBundle.putParcelable(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position])
+
+            mPostsDataList[position]
+        })//postsCardContainer.setOnClickListener closes here.....
     }//onBindViewHolder closes here.....
 
 

@@ -10,9 +10,4 @@ class PostDataDO {
     var title:String? = null//This is the title of the post.
     var body:String? = null//This is the Body of the post.
 
-//    //Posts Deserializer
-//    class Deserializer : ResponseDeserializable<PostDataDO> {
-//        override fun deserialize(content: String) = Gson().fromJson(content, PostDataDO::class.java)
-//    }
-
 }//PostDataDO closes here....
