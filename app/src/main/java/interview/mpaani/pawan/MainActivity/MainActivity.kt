@@ -2,6 +2,7 @@ package interview.mpaani.pawan.MainActivity
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import interview.mpaani.pawan.Posts.PostsFragment
@@ -14,15 +15,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), MainActivityView {
 
 
-
     //Medium priority NON-UI variables goes below......
-    private lateinit var presenter:MainActivityPresenterImpl
-
+    private lateinit var presenter: MainActivityPresenterImpl
 
 
     //Least priority varaiables goes below.....
-    private val TAG:String = "MainActivity"
-
+    private val TAG: String = "MainActivity"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +33,6 @@ class MainActivity : BaseActivity(), MainActivityView {
 
         presenter = MainActivityPresenterImpl(this, MainActivityInteractorImpl())
     }//onCreate closes here.....
-
 
 
     override fun showProgress() {
@@ -62,4 +59,16 @@ class MainActivity : BaseActivity(), MainActivityView {
         super.onDestroy()
         presenter.onDestroy()
     }//onDestroy closes here....
-}//MainActivity class closes here.....
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        if(supportFragmentManager.backStackEntryCount > 0){
+            //There are Fragments in the BackStack....
+            supportFragmentManager.popBackStackImmediate()
+        }//if(supportFragmentManager.backStackEntryCount > 0) closes here....
+        else
+            super.onBackPressed()
+     }//onBackPressed closes here....
+    }//MainActivity class closes here.....
