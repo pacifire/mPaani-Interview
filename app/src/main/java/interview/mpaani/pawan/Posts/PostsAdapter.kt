@@ -42,23 +42,12 @@ class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerV
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.postsTitleTxtV.setText(mPostsDataList[position].title.toString().trim())
-        holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
+        holder.itemView.postsTitleTxtV.maxLines = 1
 
+        holder.itemView.postsDescTxtV.setText((mPostsDataList[position].body.toString().trim()))
+        holder.itemView.postsDescTxtV.maxLines = 3
 
         holder.itemView.postsCardContainer.setOnClickListener(View.OnClickListener {
-
-//            var selectedPostBundle:Bundle = Bundle()
-//            selectedPostBundle.putParcelable(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position])
-//
-//            var postUserDetailsFrag = PostUserDetailsFragment()
-//            postUserDetailsFrag.arguments = selectedPostBundle
-//
-//            ((holder.itemView.postsTitleTxtV.context) as BaseActivity).supportFragmentManager
-//                    .beginTransaction()
-//                    .replace(R.id.fragment, postUserDetailsFrag , AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
-//                    .addToBackStack(AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
-//                    .commit()
-
 
             holder.itemView.postsTitleTxtV.context.startActivity(
                     Intent(holder.itemView.postsTitleTxtV.context, PostUserDetailsActivity::class.java)

@@ -3,6 +3,9 @@ package interview.mpaani.pawan.PostUserDetails
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import interview.mpaani.pawan.Posts.PostDataDO
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseActivity
@@ -35,16 +38,20 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
             var selectedPostDO = intent.getParcelableExtra<PostDataDO>(AppConstants.SELECTED_POST_EXTRAS)
             postUserpresenter.setPostsData(selectedPostDO)
 
-//            postTxtV.setText(selectedPostDO.title)
-//            postTxtV.append("\n\n")
-//            postTxtV.append(selectedPostDO.body)
-
             postsTitleTxtV.setText(selectedPostDO.title)
             postsDescTxtV.setText(selectedPostDO.body)
         }//if(intent.hasExtra(AppConstants.SELECTED_POST_EXTRAS)) closes here......
         else
             Log.w(TAG, "Intent does not contain ${AppConstants.SELECTED_POST_EXTRAS}")
 
+
+
+
+        //////////...............SINCE WE ARE REUSING THE LAYOUT, THEREFORE EDITING THE UI DYNAMICALLY BELOW...................\\\\\\\\\\\\\\\\\\\\
+        arrowRtImgV.visibility = View.GONE
+        var postCardparams:FrameLayout.LayoutParams = postsCardContainer.layoutParams as FrameLayout.LayoutParams
+        postCardparams.topMargin = resources.getDimensionPixelSize(R.dimen.userDetailsFABTopMargin)
+        postsCardContainer.layoutParams = postCardparams
     }//onCreate closes here....
 
 

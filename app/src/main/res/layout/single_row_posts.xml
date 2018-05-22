@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -30,8 +29,6 @@
             android:layout_alignParentTop="true"
             android:ellipsize="end"
             android:gravity="start|left"
-            android:maxLines="1"
-            android:singleLine="true"
             android:textAllCaps="true"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
 
@@ -44,7 +41,6 @@
             android:layout_marginRight="@dimen/minDimen"
             android:ellipsize="end"
             android:gravity="start|left"
-            android:maxLines="3"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:layout_toLeftOf="@+id/arrowRtImgV"
             android:layout_toStartOf="@+id/arrowRtImgV"
