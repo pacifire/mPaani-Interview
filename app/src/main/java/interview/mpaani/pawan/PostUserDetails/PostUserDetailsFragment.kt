@@ -38,7 +38,7 @@ class PostUserDetailsFragment : BaseFragment(), PostUserDetailsView{
             if (arguments!!.containsKey(AppConstants.SELECTED_POST_EXTRAS)) {
 
                 var selectedPostDO = arguments!![AppConstants.SELECTED_POST_EXTRAS] as PostDataDO
-                postUserpresenter.setUserID(selectedPostDO.userId)
+                postUserpresenter.setPostsData(selectedPostDO)
 
             }//if(arguments.containsKey(AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)) closes here....
             else
@@ -67,4 +67,14 @@ class PostUserDetailsFragment : BaseFragment(), PostUserDetailsView{
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        postUserpresenter.onDestroy()
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        postUserpresenter.onDestroy()
+    }
 }//PostUserDetailsFragment class closes here.....

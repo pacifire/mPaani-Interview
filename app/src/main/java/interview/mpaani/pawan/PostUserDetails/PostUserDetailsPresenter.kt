@@ -1,9 +1,10 @@
 package interview.mpaani.pawan.PostUserDetails
 
+import interview.mpaani.pawan.Posts.PostDataDO
 import interview.mpaani.pawan.abstracts.BasePresenter
 
 interface PostUserDetailsPresenter : BasePresenter{
 
-    fun setUserID(userId:Long)
+    fun setPostsData(postDataDO: PostDataDO)
 
 }//PostUserDetailsPresenter closes here....

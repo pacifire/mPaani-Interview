@@ -1,23 +1,40 @@
 package interview.mpaani.pawan.PostUserDetails
 
-import android.util.Log
+import interview.mpaani.pawan.Posts.PostDataDO
 
-class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUserDetailsInteractor) : PostUserDetailsPresenter {
+class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUserDetailsInteractor) : PostUserDetailsPresenter, PostUserDetailsInteractor.UserDetailsListener {
+
+
 
     //Medium priority NON-UI variables goes below.....
-
+    private var mView:PostUserDetailsView? = null
+    private var mInteractor:PostUserDetailsInteractor
 
 
     //Least priority variables goes below.....
     private val TAG:String = "PostUserDetailsPresenterImpl".toString().substring(0,23)
 
-    override fun setUserID(userId: Long) {
-        //We will get the USER ID here, lets call the data using interactor & set the data accordingly....
-        Log.d(TAG, "Pawan chk USer ID from Parcelize is as Follows: $userId")
 
-    }//setUserID closes here....
+    init {
+        mView = view
+        mInteractor = interactor
+    }
+
+
+    override fun setPostsData(postDataDO: PostDataDO) {
+        mInteractor.getUserDetails(postDataDO, this)
+    }//setPostsData closes here.....
 
     override fun onDestroy() {
+        mView = null
+    }//onDestroy closes here.....
+
+
+    override fun userDetailsFetchSuccess(totalCommentCount: Long, commentsList: List<CommentsDO>, userDetailsDO: PostUserDetailsDO) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun userDetailsFetchFailure(errorCode: Int, errorMsg: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
