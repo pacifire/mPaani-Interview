@@ -11,12 +11,12 @@
         android:scaleType="fitXY"
         android:background="@mipmap/ic_launcher"/>
 
+    <!-- TODO : Pawan, remove the Hardcoded TextSize -->
     <TextView
         android:id="@+id/userFullNameTxtV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:text="Pawan Shahani"
         android:gravity="left|bottom"
         android:layout_gravity="left|bottom"
         android:layout_margin="@dimen/fab_margin"

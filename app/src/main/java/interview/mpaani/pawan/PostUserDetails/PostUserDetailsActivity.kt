@@ -67,7 +67,7 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
             toolbar_layout.title = userDetailsDO.userName
             toolbar.title = userDetailsDO.userName
             setTitle(userDetailsDO.userName)
-
+            userFullNameTxtV.setText(userDetailsDO.name)
 
             //Setting the Avatar now....
             GlideApp.with(this)
