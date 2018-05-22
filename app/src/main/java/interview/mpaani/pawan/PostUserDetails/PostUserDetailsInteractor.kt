@@ -21,6 +21,8 @@ interface PostUserDetailsInteractor {
         fun commentsFetchSuccess(totalCommentsCount:Int, commentsDataList:List<CommentsDO>)
 
         fun commentsFetchFailure(errorCode:Int, errorMsg:String)
+
+        fun updateAvatar(url:String)
     }//UserDetailsListener closes here....
 
 }//PostUserDetailsInteractor closes here....

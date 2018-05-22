@@ -8,9 +8,8 @@ import interview.mpaani.pawan.utils.AppConstants
 
 class PostUserDetailsInteractorImpl : PostUserDetailsInteractor {
 
-
-
     //Medium priority NON-UI variables goes below.....
+
 
     //Least priority variables goes below.....
     private val TAG:String = "PostUserDetailsInteractorImpl".toString().substring(0,23)
@@ -33,6 +32,7 @@ class PostUserDetailsInteractorImpl : PostUserDetailsInteractor {
                     //If there is only 1 Data object thyen also the same condition will work perfectly fine....
 
                 userDetailsListener.userDetailsFetchSuccess(userDetailsObject)
+
             }, { err ->
                 //do something with error
 

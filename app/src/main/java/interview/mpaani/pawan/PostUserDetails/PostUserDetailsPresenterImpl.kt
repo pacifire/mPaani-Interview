@@ -65,6 +65,10 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
     }//userDetailsFetchFailure closes here.....
 
 
+    override fun updateAvatar(url: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }//updateAvatar closes here.....
+
 
     override fun onDestroy() {
         mView = null

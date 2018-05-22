@@ -10,8 +10,10 @@ import interview.mpaani.pawan.Posts.PostDataDO
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseActivity
 import interview.mpaani.pawan.utils.AppConstants
+import interview.mpaani.pawan.utils.GlideApp
 import kotlinx.android.synthetic.main.activity_user_details.*
 import kotlinx.android.synthetic.main.content_scrolling.*
+import kotlinx.android.synthetic.main.content_userdata.*
 import kotlinx.android.synthetic.main.single_row_posts.*
 
 class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
@@ -33,6 +35,8 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
 
         postUserpresenter = PostUserDetailsPresenterImpl(this, PostUserDetailsInteractorImpl())
 
+
+        ///////////////.......SETTING DATA FROM INTENT................\\\\\\\\\\\\\\\\\\
         if(intent.hasExtra(AppConstants.SELECTED_POST_EXTRAS)){
 
             var selectedPostDO = intent.getParcelableExtra<PostDataDO>(AppConstants.SELECTED_POST_EXTRAS)
@@ -59,13 +63,19 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
 
     override fun setUserDetails(userDetailsDO: PostUserDetailsDO?) {
 
+        if(userDetailsDO != null) {
+            toolbar_layout.title = userDetailsDO.userName
+            toolbar.title = userDetailsDO.userName
+            setTitle(userDetailsDO.userName)
 
-        ///////////////.............SETTING DATA FROM INTENT.....................\\\\\\\\\\\\\\\\\\
-//        if(userDetailsDO != null) {
-//            postTxtV.setText(userDetailsDO.)
-//        }//if(userDetailsDO != null) closes here.....
-//        else
-//            Log.w(TAG , "userDetailsDO is null....")
+
+            //Setting the Avatar now....
+            GlideApp.with(this)
+                    .load(AppConstants.AVATAR_BASE_URL+AppConstants.AVATAR_SIZE+"/"+userDetailsDO.email)
+                    .into(userAvatarImgV)
+        }//if(userDetailsDO != null) closes here.....
+        else
+            Log.w(TAG , "userDetailsDO is null....")
     }//setUserDetails closes here.....
 
 

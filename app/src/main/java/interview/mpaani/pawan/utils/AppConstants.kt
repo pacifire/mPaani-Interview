@@ -9,6 +9,8 @@ class AppConstants {
         val POSTS_URL:String = "posts"
         val usersURL:String = "users"
         val commentsURL:String = "comments"
+        val AVATAR_BASE_URL = "https://api.adorable.io/avatars/"
+        val AVATAR_SIZE = 285
 
 
 
