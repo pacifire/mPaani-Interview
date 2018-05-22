@@ -1,16 +1,13 @@
 package interview.mpaani.pawan.Posts
 
 import android.content.Context
-import android.os.Bundle
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import interview.mpaani.pawan.PostUserDetails.PostUserDetailsFragment
+import interview.mpaani.pawan.PostUserDetails.PostUserDetailsActivity
 import interview.mpaani.pawan.R
-import interview.mpaani.pawan.R.id.postsTitleTxtV
-import interview.mpaani.pawan.abstracts.BaseActivity
 import interview.mpaani.pawan.utils.AppConstants
 import kotlinx.android.synthetic.main.single_row_posts.view.*
 
@@ -50,17 +47,22 @@ class PostsAdapter(context: Context, postsDataList:List<PostDataDO>) : RecyclerV
 
         holder.itemView.postsCardContainer.setOnClickListener(View.OnClickListener {
 
-            var selectedPostBundle:Bundle = Bundle()
-            selectedPostBundle.putParcelable(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position])
+//            var selectedPostBundle:Bundle = Bundle()
+//            selectedPostBundle.putParcelable(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position])
+//
+//            var postUserDetailsFrag = PostUserDetailsFragment()
+//            postUserDetailsFrag.arguments = selectedPostBundle
+//
+//            ((holder.itemView.postsTitleTxtV.context) as BaseActivity).supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.fragment, postUserDetailsFrag , AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
+//                    .addToBackStack(AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
+//                    .commit()
 
-            var postUserDetailsFrag = PostUserDetailsFragment()
-            postUserDetailsFrag.arguments = selectedPostBundle
 
-            ((holder.itemView.postsTitleTxtV.context) as BaseActivity).supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment, postUserDetailsFrag , AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
-                    .addToBackStack(AppConstants.POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG)
-                    .commit()
+            holder.itemView.postsTitleTxtV.context.startActivity(
+                    Intent(holder.itemView.postsTitleTxtV.context, PostUserDetailsActivity::class.java)
+                    .putExtra(AppConstants.SELECTED_POST_EXTRAS, mPostsDataList[position]))
         })//postsCardContainer.setOnClickListener closes here.....
     }//onBindViewHolder closes here.....
 

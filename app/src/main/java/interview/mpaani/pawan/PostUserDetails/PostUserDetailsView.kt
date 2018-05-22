@@ -4,6 +4,6 @@ import interview.mpaani.pawan.abstracts.BaseView
 
 interface PostUserDetailsView : BaseView {
 
-    fun setUserDetails()
+    fun setUserDetails(userDetailsDO: PostUserDetailsDO?)
 
 }//PostUserDetailsView closes here....

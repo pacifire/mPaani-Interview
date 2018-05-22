@@ -37,8 +37,16 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
     override fun userDetailsFetchSuccess(userDetailsDO: PostUserDetailsDO?) {
         Log.d(TAG, "Pawan chk User Details $userDetailsDO")
 
-        if(mView != null)
+        if(mView != null) {
             mView!!.closeProgress()
+
+            if(userDetailsDO != null)
+                mView!!.setUserDetails(userDetailsDO)
+            else
+                Log.w(TAG, "User Details POJO is null....")
+        }//if(mView != null) closes here....
+        else
+            Log.w(TAG, "mView is null....")
     }//userDetailsFetchSuccess closes here....
 
     override fun commentsFetchSuccess(totalCommentsCount: Int, commentsDataList: List<CommentsDO>) {
