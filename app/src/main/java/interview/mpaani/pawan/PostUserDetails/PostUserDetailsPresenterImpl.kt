@@ -35,7 +35,6 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
 
 
     override fun userDetailsFetchSuccess(userDetailsDO: PostUserDetailsDO?) {
-        Log.d(TAG, "Pawan chk User Details $userDetailsDO")
 
         if(mView != null) {
             mView!!.closeProgress()
@@ -50,7 +49,11 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
     }//userDetailsFetchSuccess closes here....
 
     override fun commentsFetchSuccess(totalCommentsCount: Int, commentsDataList: List<CommentsDO>) {
-        Log.d(TAG, "Pawan chk Total Comments $totalCommentsCount")
+
+        if(mView != null)
+            mView!!.setCommentsData(totalCommentsCount)
+        else
+            Log.w(TAG, "mView is null....")
     }//commentsFetchSuccess closes here....
 
     override fun commentsFetchFailure(errorCode: Int, errorMsg: String) {

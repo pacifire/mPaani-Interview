@@ -23,6 +23,12 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
+            <ImageView
+                android:id="@+id/avatarImgV"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height"
+                android:src="@drawable/ic_launcher_background"/>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -35,13 +41,32 @@
 
     <include layout="@layout/content_scrolling" />
 
-    <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+
+
+
+
+    <FrameLayout
+        android:id="@+id/commentsCountContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />-->
+        app:layout_anchorGravity="bottom|end">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"/>
+
+        <TextView
+            android:id="@+id/commentsCountTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:elevation="@dimen/fab_margin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

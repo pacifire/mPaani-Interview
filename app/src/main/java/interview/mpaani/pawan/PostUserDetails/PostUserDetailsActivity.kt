@@ -2,11 +2,14 @@ package interview.mpaani.pawan.PostUserDetails
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import interview.mpaani.pawan.Posts.PostDataDO
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseActivity
 import interview.mpaani.pawan.utils.AppConstants
+import kotlinx.android.synthetic.main.activity_user_details.*
 import kotlinx.android.synthetic.main.content_scrolling.*
+import kotlinx.android.synthetic.main.single_row_posts.*
 
 class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
 
@@ -32,9 +35,12 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
             var selectedPostDO = intent.getParcelableExtra<PostDataDO>(AppConstants.SELECTED_POST_EXTRAS)
             postUserpresenter.setPostsData(selectedPostDO)
 
-            postTxtV.setText(selectedPostDO.title)
-            postTxtV.append("\n\n")
-            postTxtV.append(selectedPostDO.body)
+//            postTxtV.setText(selectedPostDO.title)
+//            postTxtV.append("\n\n")
+//            postTxtV.append(selectedPostDO.body)
+
+            postsTitleTxtV.setText(selectedPostDO.title)
+            postsDescTxtV.setText(selectedPostDO.body)
         }//if(intent.hasExtra(AppConstants.SELECTED_POST_EXTRAS)) closes here......
         else
             Log.w(TAG, "Intent does not contain ${AppConstants.SELECTED_POST_EXTRAS}")
@@ -54,6 +60,20 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
 //        else
 //            Log.w(TAG , "userDetailsDO is null....")
     }//setUserDetails closes here.....
+
+
+    override fun setCommentsData(totalCommentsCount: Int) {
+
+        if(totalCommentsCount > 0) {
+            commentsCountContainer.visibility = View.VISIBLE
+            commentsCountTxtV.setText(totalCommentsCount.toString().trim())
+            commentsCountTxtV.bringToFront()
+        }//if(totalCommentsCount > 0) closes here.....
+        else{
+            commentsCountContainer.visibility = View.GONE
+        }//else closes here....
+
+    }//setCommentsData closes here.....
 
 
     override fun showProgress() {
