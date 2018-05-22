@@ -18,6 +18,7 @@ class AppConstants {
 
         ////////////////////...................FRAGMENT INFLATION CONSTANTS GOES BELOW........................\\\\\\\\\\\\\\\\\\\\\\
         val POSTS_FRAGMENT_BACKSTACK_TAG = "POSTS_FRAGMENT_BACKSTACK_TAG"
+        val POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG = "POSTS_USER_DETAILS_FRAGMENT_BACKSTACK_TAG"
 
 
 
