@@ -8,15 +8,19 @@ interface PostUserDetailsInteractor {
     //THis will have all the Data....
     fun getUserDetails(postDataDO:PostDataDO, userDetailsListener: UserDetailsListener)
 
-    fun getAllComments():List<CommentsDO>
+    fun getAllComments(postDataDO:PostDataDO, userDetailsListener: UserDetailsListener)
 
 
 
     interface UserDetailsListener{
 
-        fun userDetailsFetchSuccess(totalCommentCount:Long, commentsList:List<CommentsDO>, userDetailsDO:PostUserDetailsDO)
+        fun userDetailsFetchSuccess(userDetailsDO:PostUserDetailsDO?)
 
         fun userDetailsFetchFailure(errorCode:Int, errorMsg:String)
+
+        fun commentsFetchSuccess(totalCommentsCount:Int, commentsDataList:List<CommentsDO>)
+
+        fun commentsFetchFailure(errorCode:Int, errorMsg:String)
     }//UserDetailsListener closes here....
 
 }//PostUserDetailsInteractor closes here....

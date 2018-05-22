@@ -1,5 +1,6 @@
 package interview.mpaani.pawan.PostUserDetails
 
+import android.util.Log
 import interview.mpaani.pawan.Posts.PostDataDO
 
 class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUserDetailsInteractor) : PostUserDetailsPresenter, PostUserDetailsInteractor.UserDetailsListener {
@@ -22,21 +23,40 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
 
 
     override fun setPostsData(postDataDO: PostDataDO) {
+
+        if(mView != null)
+            mView!!.showProgress()
+
         mInteractor.getUserDetails(postDataDO, this)
+        mInteractor.getAllComments(postDataDO, this)
     }//setPostsData closes here.....
+
+
+
+
+    override fun userDetailsFetchSuccess(userDetailsDO: PostUserDetailsDO?) {
+        Log.d(TAG, "Pawan chk User Details $userDetailsDO")
+
+        if(mView != null)
+            mView!!.closeProgress()
+    }//userDetailsFetchSuccess closes here....
+
+    override fun commentsFetchSuccess(totalCommentsCount: Int, commentsDataList: List<CommentsDO>) {
+        Log.d(TAG, "Pawan chk Total Comments $totalCommentsCount")
+    }//commentsFetchSuccess closes here....
+
+    override fun commentsFetchFailure(errorCode: Int, errorMsg: String) {
+
+    }//commentsFetchFailure closes here.....
+
+    override fun userDetailsFetchFailure(errorCode: Int, errorMsg: String) {
+
+    }//userDetailsFetchFailure closes here.....
+
+
 
     override fun onDestroy() {
         mView = null
     }//onDestroy closes here.....
-
-
-    override fun userDetailsFetchSuccess(totalCommentCount: Long, commentsList: List<CommentsDO>, userDetailsDO: PostUserDetailsDO) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun userDetailsFetchFailure(errorCode: Int, errorMsg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
 
 }//PostUserDetailsPresenterImpl closes here.....

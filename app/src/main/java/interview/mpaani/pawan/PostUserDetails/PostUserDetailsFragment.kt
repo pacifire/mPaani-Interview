@@ -51,9 +51,10 @@ class PostUserDetailsFragment : BaseFragment(), PostUserDetailsView{
     }//onViewCreated closes here.....
 
 
-    override fun getUserDetails() {
+    override fun setUserDetails() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    }//setUserDetails closes here.....
+
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
