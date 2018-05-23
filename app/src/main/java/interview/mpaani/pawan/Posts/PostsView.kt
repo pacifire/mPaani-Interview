@@ -11,4 +11,8 @@ interface PostsView : BaseView{
 
     fun noPostsFound(postErrorEnum:POSTS_ERROR_CODES_ENUM)
 
+    fun showPullProgress()
+
+    fun dismissPullProgress()
+
 }//PostsView closes here....
