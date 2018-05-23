@@ -34,6 +34,10 @@ class AppConstants {
         ////////////////////...............BUNDLE EXTRAS GOES BELOW........................\\\\\\\\\\\\\\\\\\\
         val SELECTED_POST_EXTRAS = "SELECTED_POST_EXTRAS"
 
+
+        ////////////////////...............BUNDLE EXTRAS FOR SCREEN ROTATION GOES BELOW........................\\\\\\\\\\\\\\\\\\\
+        val POSTS_EXTRAS_INSTANCE_STATE = "POSTS_EXTRAS_INSTANCE_STATE"
+
     }//companion Object closes here.....
 
 

@@ -31,7 +31,8 @@ class MainActivity : BaseActivity(), MainActivityView {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        initializePosts()
+        if(savedInstanceState == null)
+            initializePosts()
 
 
 
@@ -54,11 +55,9 @@ class MainActivity : BaseActivity(), MainActivityView {
     }//onOptionsItemSelected closes here.....
 
     override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun closeProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initializePosts() {

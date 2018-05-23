@@ -12,22 +12,19 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseFragment
+import interview.mpaani.pawan.utils.AppConstants
 import kotlinx.android.synthetic.main.custom_progess.*
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.util.ArrayList
 
 /**
  * A placeholder fragment containing a simple view.
  */
 class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshListener {
 
-
-    //High priority UI variables goes below....
-    private lateinit var mProgressContainer:RelativeLayout
-
-
     //Medium priority NON-Ui variables goes below.....
     private lateinit var postsPresenter:PostsPresenterImpl
-
+    private lateinit var mPostsData:List<PostDataDO>//For onSaveInstanceState.....
 
     //Least priority variables goes below.....
     private val TAG:String = "PostsFragment"
@@ -38,8 +35,8 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
                               savedInstanceState: Bundle?): View? {
 
         var view = inflater.inflate(R.layout.fragment_main, container, false)
-        postsPresenter = PostsPresenterImpl(this, PostsInteractorImpl())
 
+        postsPresenter = PostsPresenterImpl(this, PostsInteractorImpl())
 
         return view
     }//onCreateView closes here.....
@@ -49,16 +46,24 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
         super.onViewCreated(view, savedInstanceState)
         postsRefreshLayout.setOnRefreshListener(this)
 
-        mProgressContainer = progressContainer
-        postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
-    }
+        if(savedInstanceState == null)
+            postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
+        else{
+            //Set Adapter using the data in the Bundle....
+
+            mPostsData = savedInstanceState.getParcelableArrayList<PostDataDO>(AppConstants.POSTS_EXTRAS_INSTANCE_STATE)
+            //Lets set the Adapter now.....
+            setPostsAdapter(mPostsData)
+        }//else closes here.....
+    }//onViewCreated closes here....
+
 
     override fun showProgress() {
-        mProgressContainer.visibility = View.VISIBLE
+        progressContainer.visibility = View.VISIBLE
     }
 
     override fun closeProgress() {
-        mProgressContainer.visibility = View.GONE
+        progressContainer.visibility = View.GONE
         postsRecyclerV.visibility = View.VISIBLE
     }
 
@@ -67,6 +72,9 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
      * This method sets the Adapter on the RecyclerView.
      * ]**/
     override fun setPostsAdapter(postsData: List<PostDataDO>) {
+
+        mPostsData = postsData
+
         var linearLayoutManager = LinearLayoutManager(activity!!)
         postsRecyclerV.layoutManager = linearLayoutManager
 
@@ -108,6 +116,16 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
     }//dismissPullProgress closes here....
 
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //Saving data in Bundle.....
+//        var postsBundle:Bundle = Bundle()
+        outState.putParcelableArrayList(AppConstants.POSTS_EXTRAS_INSTANCE_STATE,mPostsData as ArrayList<PostDataDO>)
+
+
+
+    }//onSaveInstanceState closes here.....
 
 
     override fun onDestroyView() {
