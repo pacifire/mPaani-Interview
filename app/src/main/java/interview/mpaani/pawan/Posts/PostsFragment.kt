@@ -9,8 +9,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseFragment
+import kotlinx.android.synthetic.main.custom_progess.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -18,6 +20,9 @@ import kotlinx.android.synthetic.main.fragment_main.*
  */
 class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshListener {
 
+
+    //High priority UI variables goes below....
+    private lateinit var mProgressContainer:RelativeLayout
 
 
     //Medium priority NON-Ui variables goes below.....
@@ -34,7 +39,7 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
 
         var view = inflater.inflate(R.layout.fragment_main, container, false)
         postsPresenter = PostsPresenterImpl(this, PostsInteractorImpl())
-        postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
+
 
         return view
     }//onCreateView closes here.....
@@ -43,14 +48,18 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postsRefreshLayout.setOnRefreshListener(this)
+
+        mProgressContainer = progressContainer
+        postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
     }
 
     override fun showProgress() {
-
+        mProgressContainer.visibility = View.VISIBLE
     }
 
     override fun closeProgress() {
-
+        mProgressContainer.visibility = View.GONE
+        postsRecyclerV.visibility = View.VISIBLE
     }
 
 

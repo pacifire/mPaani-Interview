@@ -2,10 +2,11 @@
     <string name="app_name">mPaani Posts</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="pleaseWaitSpelling">Please wait....</string>
 
 
     <!--...................... Error Strings goes below ....................-->
-    <string name="noCommentsAvailErrorMsg">No Comments availiable</string>
-    <string name="noUserDetailsAvailErrorMsg">No User Details availiable</string>
-    <string name="noPostsAvailiableErrorMsg">No Posts availiable</string>
+    <string name="noCommentsAvailErrorMsg">No Comments available</string>
+    <string name="noUserDetailsAvailErrorMsg">No User Details available</string>
+    <string name="noPostsAvailiableErrorMsg">No Posts available</string>
 </resources>
