@@ -31,7 +31,7 @@ class PostsInteractorImpl : PostsInteractor{
                 postLoadListener.postsLoadSuccess(postsData)
             }, { err ->
                 //do something with error
-                postLoadListener.postsLoadFailure(err.toString().trim())
+                postLoadListener.postsLoadFailure(POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE)
             })
         }//Fuel.get closes here.....
 

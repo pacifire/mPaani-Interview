@@ -1,6 +1,7 @@
 package interview.mpaani.pawan.Posts
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -44,11 +45,6 @@ class PostsFragment : BaseFragment(), PostsView {
 
     }
 
-    override fun displayError(errorMessage: String, errorCode: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-
 
     /**
      * This method sets the Adapter on the RecyclerView.
@@ -63,13 +59,19 @@ class PostsFragment : BaseFragment(), PostsView {
         postsRecyclerV.adapter = PostsAdapter(postsRecyclerV.context, postsData)
     }//setPostsAdapter closes here.....
 
-    override fun appendPostsToView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun noPostsFound(errorMsg: String) {
+    override fun appendPostsToView() {}
 
+    override fun noPostsFound(postsErrorEnum : POSTS_ERROR_CODES_ENUM) {
+
+        when(postsErrorEnum) {
+
+
+            POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE -> Snackbar.make(postsRefreshLayout, getString(R.string.noPostsAvailiableErrorMsg), Snackbar.LENGTH_SHORT).show();
+
+        }//when(postsErrorEnum) closes here.....
     }//noPostsFound closes here.....
+
 
     override fun onDestroyView() {
         super.onDestroyView()

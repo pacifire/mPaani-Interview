@@ -28,16 +28,18 @@ class PostsPresenterImpl(view:PostsView, interactor:PostsInteractor) : PostsPres
             if (!postsData.isEmpty())//-ve condition....
                 postsView!!.setPostsAdapter(postsData)//i.e. we will set Adapter only if there is data in the Array....
             else
-                postsView!!.noPostsFound("")
+                postsView!!.noPostsFound(POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE)
         }//if(postsView != null) closes here.....
         else
             Log.w(TAG, "postsView is null")
     }//postsLoadSuccess closes here....
 
 
-    override fun postsLoadFailure(postFailureMsg: String) {
+    override fun postsLoadFailure(postErrorCodeEnum:POSTS_ERROR_CODES_ENUM) {
         if(postsView != null) {
             postsView!!.closeProgress()
+
+            postsView!!.noPostsFound(POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE)
         }//if(postsView != null) closes here....
         else
             Log.w(TAG, "postsView is null")

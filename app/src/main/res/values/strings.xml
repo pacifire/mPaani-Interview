@@ -7,4 +7,5 @@
     <!--...................... Error Strings goes below ....................-->
     <string name="noCommentsAvailErrorMsg">No Comments availiable</string>
     <string name="noUserDetailsAvailErrorMsg">No User Details availiable</string>
+    <string name="noPostsAvailiableErrorMsg">No Posts availiable</string>
 </resources>

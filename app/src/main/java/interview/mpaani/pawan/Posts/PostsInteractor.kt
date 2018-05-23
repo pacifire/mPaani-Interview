@@ -11,7 +11,7 @@ interface PostsInteractor {
 
         fun postsLoadSuccess(postsData:List<PostDataDO>)
 
-        fun postsLoadFailure(postFailureMsg:String)
+        fun postsLoadFailure(postErrorCodeEnum:POSTS_ERROR_CODES_ENUM)
 
     }//OnPostLoadListener closes here.....
 
