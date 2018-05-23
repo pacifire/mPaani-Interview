@@ -31,7 +31,11 @@ class PostsInteractorImpl : PostsInteractor{
                 postLoadListener.postsLoadSuccess(postsData)
             }, { err ->
                 //do something with error
-                postLoadListener.postsLoadFailure(POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE)
+
+                if(err.exception.toString().trim().startsWith("java.net.UnknownHostException: Unable to resolve host"))
+                    postLoadListener.noInternetConnection()
+                else
+                    postLoadListener.postsLoadFailure(POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE)
             })
         }//Fuel.get closes here.....
 

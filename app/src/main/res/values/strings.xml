@@ -9,4 +9,5 @@
     <string name="noCommentsAvailErrorMsg">No Comments available</string>
     <string name="noUserDetailsAvailErrorMsg">No User Details available</string>
     <string name="noPostsAvailiableErrorMsg">No Posts available</string>
+    <string name="noInternetConnectionFound">No Internet connection found</string>
 </resources>

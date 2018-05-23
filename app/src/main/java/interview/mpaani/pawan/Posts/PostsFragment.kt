@@ -89,6 +89,8 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
 
         when(postsErrorEnum) {
             POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE -> Snackbar.make(postsRefreshLayout, getString(R.string.noPostsAvailiableErrorMsg), Snackbar.LENGTH_SHORT).show();
+
+            POSTS_ERROR_CODES_ENUM.NO_INTERNET_CONNECTION -> Snackbar.make(postsRefreshLayout, getString(R.string.noInternetConnectionFound), Snackbar.LENGTH_SHORT).show();
         }//when(postsErrorEnum) closes here.....
     }//noPostsFound closes here.....
 

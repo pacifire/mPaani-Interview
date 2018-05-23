@@ -13,6 +13,8 @@ interface PostsInteractor {
 
         fun postsLoadFailure(postErrorCodeEnum:POSTS_ERROR_CODES_ENUM)
 
+        fun noInternetConnection()
+
     }//OnPostLoadListener closes here.....
 
 }//PostsInteractor closes here....

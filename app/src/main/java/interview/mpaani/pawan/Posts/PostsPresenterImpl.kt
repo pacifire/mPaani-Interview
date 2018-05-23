@@ -4,6 +4,7 @@ import android.util.Log
 
 class PostsPresenterImpl(view:PostsView, interactor:PostsInteractor) : PostsPresenter, PostsInteractor.OnPostLoadListener {
 
+
     //Medium priority NON-UI variables goes below.....
     private var postsView:PostsView? = null
     private var postsinteractor:PostsInteractor
@@ -91,7 +92,18 @@ class PostsPresenterImpl(view:PostsView, interactor:PostsInteractor) : PostsPres
                 else -> Log.w(TAG, "Progress Not visible bcoz view is null....")
             }//when(postsLoadedVia) closes here.....
         }//if(postsView != null) closes here....
+        else
+            Log.w(TAG, "postsView is null....")
     }//dismissProgress closes here.....
+
+
+    override fun noInternetConnection() {
+        if(postsView != null) {
+            postsView!!.noPostsFound(POSTS_ERROR_CODES_ENUM.NO_INTERNET_CONNECTION)
+        }//if(postsView != null) closes here....
+        else
+            Log.w(TAG, "postsView is null....")
+    }//noInternetConnection closes here.....
 
 
     override fun onDestroy() {
