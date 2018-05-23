@@ -11,4 +11,6 @@ interface PostsView : BaseView{
 
     fun noPostsFound(errorMsg:String)
 
+    fun displayError(errorMessage: String, errorCode: String)
+
 }//PostsView closes here....

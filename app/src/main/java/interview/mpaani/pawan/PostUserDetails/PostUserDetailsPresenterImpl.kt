@@ -56,17 +56,22 @@ class PostUserDetailsPresenterImpl(view:PostUserDetailsView, interactor: PostUse
             Log.w(TAG, "mView is null....")
     }//commentsFetchSuccess closes here....
 
-    override fun commentsFetchFailure(errorCode: Int, errorMsg: String) {
+    override fun commentsFetchFailure(errorCode: Int, enumErrorCode:USER_DETAILS_ERROR_CODES_ENUM) {
 
     }//commentsFetchFailure closes here.....
 
-    override fun userDetailsFetchFailure(errorCode: Int, errorMsg: String) {
 
+    override fun userDetailsFetchFailure(errorCode: Int, enumErrorCode:USER_DETAILS_ERROR_CODES_ENUM) {
+        if(mView != null){
+            mView!!.displayError(errorCode, enumErrorCode)
+        }//if(mView != null) closes here.....
+        else
+            Log.w(TAG, "mView is null....")
     }//userDetailsFetchFailure closes here.....
 
 
     override fun updateAvatar(url: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }//updateAvatar closes here.....
 
 

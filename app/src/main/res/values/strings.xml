@@ -4,4 +4,7 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
 
+    <!--...................... Error Strings goes below ....................-->
+    <string name="noCommentsAvailErrorMsg">No Comments availiable</string>
+    <string name="noUserDetailsAvailErrorMsg">No User Details availiable</string>
 </resources>

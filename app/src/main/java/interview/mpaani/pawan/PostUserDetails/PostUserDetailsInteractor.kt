@@ -16,11 +16,11 @@ interface PostUserDetailsInteractor {
 
         fun userDetailsFetchSuccess(userDetailsDO:PostUserDetailsDO?)
 
-        fun userDetailsFetchFailure(errorCode:Int, errorMsg:String)
+        fun userDetailsFetchFailure(errorCode:Int, enumErrorCode:USER_DETAILS_ERROR_CODES_ENUM)
 
         fun commentsFetchSuccess(totalCommentsCount:Int, commentsDataList:List<CommentsDO>)
 
-        fun commentsFetchFailure(errorCode:Int, errorMsg:String)
+        fun commentsFetchFailure(errorCode:Int, enumErrorCode:USER_DETAILS_ERROR_CODES_ENUM)
 
         fun updateAvatar(url:String)
     }//UserDetailsListener closes here....

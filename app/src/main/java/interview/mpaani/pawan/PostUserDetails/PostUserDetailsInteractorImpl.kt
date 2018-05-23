@@ -32,12 +32,9 @@ class PostUserDetailsInteractorImpl : PostUserDetailsInteractor {
                     //If there is only 1 Data object thyen also the same condition will work perfectly fine....
 
                 userDetailsListener.userDetailsFetchSuccess(userDetailsObject)
-
             }, { err ->
                 //do something with error
-
-                TODO("@Pawan Handle this scenario")
-                userDetailsListener.userDetailsFetchFailure(0,"")
+                userDetailsListener.userDetailsFetchFailure(-1,USER_DETAILS_ERROR_CODES_ENUM.NO_USER_DETAILS_FOUND)
             })
         }//Fuel.get closes here.....
 
@@ -60,9 +57,7 @@ class PostUserDetailsInteractorImpl : PostUserDetailsInteractor {
                 userDetailsListener.commentsFetchSuccess(commentsList.size, commentsList)
             }, { err ->
                 //do something with error
-
-                TODO("@Pawan Handle this scenario")
-                userDetailsListener.commentsFetchFailure(0,"")
+                userDetailsListener.commentsFetchFailure(0, USER_DETAILS_ERROR_CODES_ENUM.NO_COMMENTS_FOUND)
             })
         }//Fuel.get closes here.....
     }//getAllComments closes here.....

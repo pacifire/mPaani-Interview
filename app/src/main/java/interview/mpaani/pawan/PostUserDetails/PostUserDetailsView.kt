@@ -8,4 +8,5 @@ interface PostUserDetailsView : BaseView {
 
     fun setCommentsData(totalCommentsCount:Int)
 
+    fun displayError(errorCode:Int, enumErrorCode:USER_DETAILS_ERROR_CODES_ENUM)
 }//PostUserDetailsView closes here....

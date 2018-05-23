@@ -61,10 +61,6 @@ class MainActivity : BaseActivity(), MainActivityView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun displayError(errorMessage: String, errorCode: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun initializePosts() {
         supportFragmentManager
                 .beginTransaction()

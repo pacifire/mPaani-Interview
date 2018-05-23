@@ -6,6 +6,4 @@ interface BaseView {
 
     fun closeProgress()
 
-    fun displayError(errorMessage:String, errorCode:String)
-
 }//BaseView closes here.....

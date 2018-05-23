@@ -3,4 +3,7 @@
     <dimen name="userDetailsFABTopMargin">25dp</dimen>
     <dimen name="minDimen">8dp</dimen>
     <dimen name="app_bar_height">250dp</dimen>
+
+
+    <dimen name="collapsableTitleTxtSize">30sp</dimen>
 </resources>

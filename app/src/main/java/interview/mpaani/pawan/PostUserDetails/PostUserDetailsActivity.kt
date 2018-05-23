@@ -1,6 +1,7 @@
 package interview.mpaani.pawan.PostUserDetails
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -18,8 +19,6 @@ import kotlinx.android.synthetic.main.content_userdata.*
 import kotlinx.android.synthetic.main.single_row_posts.*
 
 class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
-
-
 
     //Medium priority NON-UI variables goes below......
     private lateinit var postUserpresenter:PostUserDetailsPresenterImpl
@@ -119,9 +118,16 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
 
     }
 
-    override fun displayError(errorMessage: String, errorCode: String) {
+    override fun displayError(errorCode: Int, enumErrorCode: USER_DETAILS_ERROR_CODES_ENUM) {
 
-    }
+        when(enumErrorCode){
+            USER_DETAILS_ERROR_CODES_ENUM.NO_USER_DETAILS_FOUND -> Snackbar.make(userDetailsParentContainer, getString(R.string.noUserDetailsAvailErrorMsg), Snackbar.LENGTH_SHORT).show()
+
+            USER_DETAILS_ERROR_CODES_ENUM.NO_COMMENTS_FOUND -> Snackbar.make(userDetailsParentContainer, getString(R.string.noCommentsAvailErrorMsg), Snackbar.LENGTH_SHORT).show()
+
+        }//when(enumErrorCode) closes here....
+    }//displayError closes here....
+
 
     override fun onDestroy() {
         super.onDestroy()

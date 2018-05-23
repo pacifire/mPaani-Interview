@@ -11,7 +11,6 @@
         android:scaleType="fitXY"
         android:background="@mipmap/ic_launcher"/>
 
-    <!-- TODO : Pawan, remove the Hardcoded TextSize -->
     <TextView
         android:id="@+id/userFullNameTxtV"
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         android:gravity="left|bottom"
         android:layout_gravity="left|bottom"
         android:layout_margin="@dimen/fab_margin"
-        android:textSize="30sp"
+        android:textSize="@dimen/collapsableTitleTxtSize"
         android:singleLine="true"
         android:maxLines="1"/>
 </FrameLayout>
