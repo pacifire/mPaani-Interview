@@ -49,8 +49,10 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
         else{
             //Set Adapter using the data in the Bundle....
             mPostsData = savedInstanceState.getParcelableArrayList<PostDataDO>(AppConstants.POSTS_EXTRAS_INSTANCE_STATE)
-            //Lets set the Adapter now.....
-            setPostsAdapter(mPostsData)
+            if(mPostsData == null)
+                postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
+            else
+                setPostsAdapter(mPostsData)//Lets set the Adapter now.....
         }//else closes here.....
     }//onViewCreated closes here....
 
@@ -111,7 +113,9 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList(AppConstants.POSTS_EXTRAS_INSTANCE_STATE,mPostsData as ArrayList<PostDataDO>)
+
+        if(::mPostsData.isInitialized)
+            outState.putParcelableArrayList(AppConstants.POSTS_EXTRAS_INSTANCE_STATE,mPostsData as ArrayList<PostDataDO>)
     }//onSaveInstanceState closes here.....
 
 

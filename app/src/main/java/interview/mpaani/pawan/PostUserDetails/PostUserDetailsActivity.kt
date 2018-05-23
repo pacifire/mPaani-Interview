@@ -170,11 +170,14 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView {
         if(outState != null) {
             outState.putInt(AppConstants.COMMENTS_COUNT_EXTRAS_INSTANCE_STATE, mTotalCommentsCount)
 
+
             if(mUserDetailsDO != null)
                 outState.putParcelable(AppConstants.USER_DETAILS_EXTAS_INSTANCE_STATE, mUserDetailsDO)
 
-            if(mSelectedPostDO != null)
-                outState.putParcelable(AppConstants.SELECTED_POST_EXTA_INSTANCE_STATE, mSelectedPostDO)
+
+            if(::mSelectedPostDO.isInitialized)
+                if(mSelectedPostDO != null)
+                    outState.putParcelable(AppConstants.SELECTED_POST_EXTA_INSTANCE_STATE, mSelectedPostDO)
 
         }//if(outState != null) closes here....
         else
