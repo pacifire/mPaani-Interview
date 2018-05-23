@@ -3,19 +3,17 @@ package interview.mpaani.pawan.Posts
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import interview.mpaani.pawan.R
 import interview.mpaani.pawan.abstracts.BaseFragment
 import interview.mpaani.pawan.utils.AppConstants
 import kotlinx.android.synthetic.main.custom_progess.*
 import kotlinx.android.synthetic.main.fragment_main.*
-import java.util.ArrayList
+import java.util.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -50,7 +48,6 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
             postsPresenter.loadPosts(POSTS_LOADED_VIA.NORMAL_LOAD)
         else{
             //Set Adapter using the data in the Bundle....
-
             mPostsData = savedInstanceState.getParcelableArrayList<PostDataDO>(AppConstants.POSTS_EXTRAS_INSTANCE_STATE)
             //Lets set the Adapter now.....
             setPostsAdapter(mPostsData)
@@ -77,7 +74,6 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
 
         var linearLayoutManager = LinearLayoutManager(activity!!)
         postsRecyclerV.layoutManager = linearLayoutManager
-
 //        val dividerItemDecoration = DividerItemDecoration(postsRecyclerV.getContext(),
 //                linearLayoutManager.getOrientation())
 //        postsRecyclerV.addItemDecoration(dividerItemDecoration)
@@ -90,10 +86,7 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
     override fun noPostsFound(postsErrorEnum : POSTS_ERROR_CODES_ENUM) {
 
         when(postsErrorEnum) {
-
-
             POSTS_ERROR_CODES_ENUM.POSTS_NOT_AVAILIABLE -> Snackbar.make(postsRefreshLayout, getString(R.string.noPostsAvailiableErrorMsg), Snackbar.LENGTH_SHORT).show();
-
         }//when(postsErrorEnum) closes here.....
     }//noPostsFound closes here.....
 
@@ -118,13 +111,7 @@ class PostsFragment : BaseFragment(), PostsView, SwipeRefreshLayout.OnRefreshLis
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
-        //Saving data in Bundle.....
-//        var postsBundle:Bundle = Bundle()
         outState.putParcelableArrayList(AppConstants.POSTS_EXTRAS_INSTANCE_STATE,mPostsData as ArrayList<PostDataDO>)
-
-
-
     }//onSaveInstanceState closes here.....
 
 
