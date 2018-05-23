@@ -37,7 +37,6 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-
         postUserpresenter = PostUserDetailsPresenterImpl(this, PostUserDetailsInteractorImpl())
 
 
@@ -85,11 +84,13 @@ class PostUserDetailsActivity : BaseActivity(), PostUserDetailsView{
             toolbar.title = userDetailsDO.userName
             setTitle(userDetailsDO.userName)
             userFullNameTxtV.setText(userDetailsDO.name)
+            toolbarTitle.setText(userDetailsDO.name.toUpperCase())
 
             //Setting the Avatar now....
             GlideApp.with(this)
                     .load(AppConstants.AVATAR_BASE_URL+AppConstants.AVATAR_SIZE+"/"+userDetailsDO.email)
                     .into(userAvatarImgV)
+
         }//if(userDetailsDO != null) closes here.....
         else
             Log.w(TAG , "userDetailsDO is null....")

@@ -64,7 +64,7 @@ class MainActivity : BaseActivity(), MainActivityView {
     override fun initializePosts() {
         supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment, PostsFragment(), AppConstants.POSTS_FRAGMENT_BACKSTACK_TAG)
+                .replace(R.id.fragment, PostsFragment(), AppConstants.POSTS_FRAGMENT_BACKSTACK_TAG)
                 .addToBackStack(AppConstants.POSTS_FRAGMENT_BACKSTACK_TAG)
                 .commit()
     }//initializePosts closes here....
